@@ -7,6 +7,7 @@ actions[undefined]=function(){
   getElement("#tieBreakForm").style.display="none";
 };
 actions['placeTile']=function(res){
+  beep();
   enableTilesClick();
   let state=res.turnDetails.state;
   if(state.message) {
@@ -15,12 +16,14 @@ actions['placeTile']=function(res){
 };
 
 actions['chooseHotel']=function(res){
+  beep();
   let hotels = res.hotelsData.filter((hotel)=>!hotel.status);
   let actionInfo={hotels};
   displayForm(actionInfo,'Start Hotel','#inactiveHotelsForm',promptStartHotel);
 };
 
 actions['chooseHotelForMerge']=function(res){
+  beep();
   let state=res.turnDetails.state;
   let hotels = state.survivorHotels;
   let actionInfo={hotels};
@@ -28,10 +31,13 @@ actions['chooseHotelForMerge']=function(res){
 };
 
 actions['disposeShares']=function(res){
+  beep();
   letPlayerDisposeShares(res);
 };
 
 actions['purchaseShares']=function(res){
+  beep();
+
   getElement('#listed-hotels').classList.remove('hidden');
   showEndTurn();
 };
